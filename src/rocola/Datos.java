@@ -5,8 +5,15 @@
  */
 package rocola;
 
+import Vistas.Perfil;
+import java.awt.Image;
+import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -95,7 +102,7 @@ public class Datos {
     public boolean esCorreo(String correo){
         Pattern pat = null;
         Matcher mat = null;
-        pat = Pattern.compile("([A-Za-z0-9])*+[-\\_\\.]+([A-Za-z0-9])*@uacm.edu.mx");
+        pat = Pattern.compile("([A-Za-z0-9])*+[.]+([A-Za-z0-9])*@uacm.edu.mx");
         mat = pat.matcher(correo);
         if(mat.find())
             return true;
@@ -103,5 +110,19 @@ public class Datos {
             return false;
     }
     
-    
+    /*public void seleccionarFoto(){
+        JFileChooser file = new JFileChooser();
+        file.showOpenDialog(file);
+        File archivo = file.getSelectedFile();
+        Perfil per = new Perfil ();
+        if(archivo != null){
+            String origen = archivo.getPath();
+           ImageIcon icon = new ImageIcon(origen);
+           Icon icono = new ImageIcon(icon.getImage().getScaledInstance(per.jlFoto.getWidth(),per.jlFoto.getHeight(),Image.SCALE_DEFAULT));
+           per.jlFoto.setText(null);
+           per.jlFoto.setIcon(icon);
+        }else{
+            JOptionPane.showMessageDialog(null,"error abriendo la imagen");
+        }
+    }*/
 }
