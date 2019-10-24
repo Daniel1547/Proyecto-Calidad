@@ -94,6 +94,11 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel5.setText("Número telefonico");
 
+        txtNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroActionPerformed(evt);
+            }
+        });
         txtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNumeroKeyTyped(evt);
@@ -370,6 +375,10 @@ public class Registro extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnAceptarRMouseClicked
+
+    private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroActionPerformed
 
     /**
      * @param args the command line arguments
