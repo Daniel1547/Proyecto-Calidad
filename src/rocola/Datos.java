@@ -5,6 +5,7 @@
  */
 package rocola;
 
+import Vistas.Carga;
 import Vistas.Perfil;
 import java.awt.Image;
 import java.io.File;
@@ -14,6 +15,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -110,19 +112,25 @@ public class Datos {
             return false;
     }
     
-    /*public void seleccionarFoto(){
-        JFileChooser file = new JFileChooser();
-        file.showOpenDialog(file);
-        File archivo = file.getSelectedFile();
-        Perfil per = new Perfil ();
-        if(archivo != null){
-            String origen = archivo.getPath();
-           ImageIcon icon = new ImageIcon(origen);
-           Icon icono = new ImageIcon(icon.getImage().getScaledInstance(per.jlFoto.getWidth(),per.jlFoto.getHeight(),Image.SCALE_DEFAULT));
-           per.jlFoto.setText(null);
-           per.jlFoto.setIcon(icon);
-        }else{
-            JOptionPane.showMessageDialog(null,"error abriendo la imagen");
+   public void seleccionarFoto(){
+        int resultado;
+        File fichero;
+        Carga ven = new Carga();
+        Perfil per = new Perfil();
+        
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNGP","jpg","png");
+        ven.jfcCarga.setFileFilter(filtro);
+        resultado = ven.jfcCarga.showOpenDialog(null);
+        if(JFileChooser.APPROVE_OPTION == resultado){
+            fichero = ven.jfcCarga.getSelectedFile();
+            try{
+                 ImageIcon imagen = new ImageIcon(fichero.toString());
+                 Icon icono = new ImageIcon (imagen.getImage().getScaledInstance(per.jlFoto.getWidth(),per.jlFoto.getHeight(), Image.SCALE_DEFAULT));
+                  per.jlFoto.setText(null);
+                 per.jlFoto.setIcon(icono);
+            }catch(Exception e){
+                
+            }
         }
-    }*/
+   }
 }

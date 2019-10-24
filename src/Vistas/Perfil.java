@@ -12,6 +12,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import rocola.Datos;
 
 /**
@@ -50,10 +51,9 @@ public class Perfil extends javax.swing.JFrame {
 
         jlFoto.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlFoto.setText("FOTO");
+        jlFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuarios.png"))); // NOI18N
         jlFoto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jlFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlFoto.setDisabledIcon(null);
         jlFoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlFotoMouseClicked(evt);
@@ -79,9 +79,8 @@ public class Perfil extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jlCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jlTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jlCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jlNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(84, 84, 84))
             .addGroup(layout.createSequentialGroup()
@@ -114,26 +113,28 @@ public class Perfil extends javax.swing.JFrame {
 
     private void jlFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlFotoMouseClicked
         // TODO add your handling code here:
-       // Datos datos = new Datos("","","","","","",0);
+        //Datos datos = new Datos("","","","","","",0);
         //datos.seleccionarFoto(); 
+     
+        int resultado;
+        File fichero;
+        Carga ven = new Carga();
+        Perfil per = new Perfil();
         
-        JFileChooser file = new JFileChooser();
-        file.showOpenDialog(file);
-        File archivo = file.getSelectedFile();
-        Perfil per = new Perfil ();
-        if(archivo != null){
-            String origen = archivo.getPath();
-           ImageIcon icon = new ImageIcon(origen);
-           Icon icono = new ImageIcon(icon.getImage().getScaledInstance(per.jlFoto.getWidth(),per.jlFoto.getHeight(),Image.SCALE_DEFAULT));
-           jlFoto.setText(null);
-           this.setLocationRelativeTo(null);
-           
-           
-           jlFoto.setIcon(icon);
-        }else{
-            JOptionPane.showMessageDialog(null,"error abriendo la imagen");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNGP","jpg","png");
+        ven.jfcCarga.setFileFilter(filtro);
+        resultado = ven.jfcCarga.showOpenDialog(null);
+        if(JFileChooser.APPROVE_OPTION == resultado){
+            fichero = ven.jfcCarga.getSelectedFile();
+            try{
+                 ImageIcon imagen = new ImageIcon(fichero.toString());
+                 Icon icono = new ImageIcon (imagen.getImage().getScaledInstance(jlFoto.getWidth(),jlFoto.getHeight(), Image.SCALE_DEFAULT));
+                 jlFoto.setText(null);
+                 jlFoto.setIcon(icono);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "error al cargar la imagen" + e);
+            }
         }
-        
         
         
         
