@@ -54,6 +54,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAceptarMouseClicked(evt);
+            }
+        });
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -149,8 +154,21 @@ public class Login extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Inicio Sesion correctamente");
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
+        // TODO add your handling code here:
+        String pas = new String (txtPassword.getPassword());
+        String usu = new String (txtUsuario.getText());
+        
+            if(usu.equals("hola") && pas.equals("123") ){
+                
+                JOptionPane.showMessageDialog(this, "Inicio Sesion correctamente");
+          }else{
+            
+        JOptionPane.showMessageDialog(this, "datos incorrectos");
+        }
+    }//GEN-LAST:event_btnAceptarMouseClicked
 
     /**
      * @param args the command line arguments

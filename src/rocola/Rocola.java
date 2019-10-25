@@ -19,11 +19,11 @@ public class Rocola {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Perfil p = new Perfil();
-       p.setVisible(true);
+        //Perfil p = new Perfil();
+       //p.setVisible(true);
         
-        //Login log = new Login ();
-        //log.setVisible(true);
+       Login log = new Login ();
+        log.setVisible(true);
     }
     
 }
