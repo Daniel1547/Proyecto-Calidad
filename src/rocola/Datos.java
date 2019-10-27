@@ -22,7 +22,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Dani
  */
 public class Datos {
-    
+    private int id;
     private String nombre;
     private String apellido;
     private String sexo;
@@ -31,9 +31,9 @@ public class Datos {
     private String contrasena;
     private int telefono;
 
-    public Datos( String nombre, String apellido, String sexo, String correo, 
+    public Datos( int id, String nombre, String apellido, String sexo, String correo, 
             String usuario, String contrasena, int telefono) {
-       
+       this.id=id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.sexo = sexo;
@@ -43,6 +43,14 @@ public class Datos {
         this.telefono = telefono;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -104,7 +112,7 @@ public class Datos {
     public boolean esCorreo(String correo){
         Pattern pat = null;
         Matcher mat = null;
-        pat = Pattern.compile("([A-Za-z0-9])*+[.]+([A-Za-z0-9])*@uacm.edu.mx");
+        pat = Pattern.compile("([A-Za-z0-9])*+[.]+([A-Za-z0-9])*@uacm.mx");
         mat = pat.matcher(correo);
         if(mat.find())
             return true;

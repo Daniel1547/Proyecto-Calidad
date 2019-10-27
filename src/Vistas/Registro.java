@@ -13,6 +13,8 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import rocola.Conexion;
+import rocola.DB;
 import rocola.Datos;
 //import registro.Datos;
 
@@ -85,7 +87,7 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        txtCorreo.setToolTipText("nombre.apellido@uacm.edu.mx");
+        txtCorreo.setToolTipText("nombre.apellido@uacm.mx");
         txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCorreoFocusLost(evt);
@@ -106,11 +108,6 @@ public class Registro extends javax.swing.JFrame {
         });
 
         btnAceptarR.setText("Aceptar");
-        btnAceptarR.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAceptarRMouseClicked(evt);
-            }
-        });
         btnAceptarR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarRActionPerformed(evt);
@@ -184,6 +181,14 @@ public class Registro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 22, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,32 +197,28 @@ public class Registro extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                                     .addComponent(txtApellido))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 68, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtNumero)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jpSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(btnAceptarR)
-                                .addGap(39, 39, 39)
-                                .addComponent(btnCancelarR))
+                                .addComponent(txtNumero))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCorreo)
-                                    .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                                    .addComponent(txtUsuario))))
-                        .addGap(0, 22, Short.MAX_VALUE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(35, 35, 35)
+                                        .addComponent(btnAceptarR)
+                                        .addGap(39, 39, 39)
+                                        .addComponent(btnCancelarR))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                                            .addComponent(txtUsuario))))
+                                .addGap(12, 12, 12)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +237,7 @@ public class Registro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -252,7 +253,7 @@ public class Registro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptarR)
                     .addComponent(btnCancelarR))
-                .addGap(21, 21, 21))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -315,24 +316,7 @@ public class Registro extends javax.swing.JFrame {
           //  "dani15","usuario1", 15474413);
     private void btnAceptarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarRActionPerformed
         // TODO add your handling code here:
-      
-     
-    }//GEN-LAST:event_btnAceptarRActionPerformed
-
-    private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
-        // TODO add your handling code here:
-        Datos d = new Datos("","","","","","",0);
-        if (d.esCorreo(txtCorreo.getText())) {
-        }else{
-              JOptionPane.showMessageDialog(null, "Correo invalido",
-                    "Campo obligatorio", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-    }//GEN-LAST:event_txtCorreoFocusLost
-
-    private void btnAceptarRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarRMouseClicked
-        // TODO add your handling code here:
-        Datos d = new Datos("","","","","","",0);
+      Datos d = new Datos(0,"","","","","","",0);
         if((txtNombre.getText().isEmpty())&&(txtApellido.getText().isEmpty())
                 && (txtCorreo.getText().isEmpty())
              && (txtContrasena.getText().isEmpty())  
@@ -372,9 +356,19 @@ public class Registro extends javax.swing.JFrame {
         
             
         }
+     
+    }//GEN-LAST:event_btnAceptarRActionPerformed
+
+    private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
+        // TODO add your handling code here:
+        Datos d = new Datos(0,"","","","","","",0);
+        if (d.esCorreo(txtCorreo.getText())) {
+        }else{
+              JOptionPane.showMessageDialog(null, "Correo invalido",
+                    "Campo obligatorio", JOptionPane.INFORMATION_MESSAGE);
+        }
         
-        
-    }//GEN-LAST:event_btnAceptarRMouseClicked
+    }//GEN-LAST:event_txtCorreoFocusLost
 
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:
@@ -423,8 +417,8 @@ public class Registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptarR;
-    private javax.swing.JButton btnCancelarR;
+    public javax.swing.JButton btnAceptarR;
+    public javax.swing.JButton btnCancelarR;
     public static javax.swing.ButtonGroup btnGrupRadio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -433,14 +427,14 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jpSexo;
-    private javax.swing.JRadioButton rbHombre;
-    private javax.swing.JRadioButton rbMujer;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtContrasena;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNumero;
-    private javax.swing.JTextField txtUsuario;
+    public javax.swing.JPanel jpSexo;
+    public javax.swing.JRadioButton rbHombre;
+    public javax.swing.JRadioButton rbMujer;
+    public javax.swing.JTextField txtApellido;
+    public javax.swing.JTextField txtContrasena;
+    public javax.swing.JTextField txtCorreo;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtNumero;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
