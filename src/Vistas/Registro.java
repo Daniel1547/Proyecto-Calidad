@@ -360,7 +360,7 @@ public class Registro extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "Campo obligatorio \nIngrese el numero",
                                     "Campo obligatorio", JOptionPane.INFORMATION_MESSAGE);
                         }else{
-                            if((rbHombre.isEnabled()) || (rbMujer.isEnabled())){
+                            if((!rbHombre.isEnabled()) || (!rbMujer.isEnabled())){
                                 JOptionPane.showMessageDialog(null, "Campo obligatorio\nEliga el sexo",
                                       "Campo obligatorio", JOptionPane.INFORMATION_MESSAGE);
                                 }

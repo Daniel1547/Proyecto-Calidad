@@ -160,13 +160,10 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String pas = new String (txtPassword.getPassword());
         String usu = new String (txtUsuario.getText());
-        
-            if(usu.equals("hola") && pas.equals("123") ){
-                
-                JOptionPane.showMessageDialog(this, "Inicio Sesion correctamente");
+        if(usu.equals("hola") && pas.equals("123") ){
+            JOptionPane.showMessageDialog(this, "Inicio Sesion correctamente");
           }else{
-            
-        JOptionPane.showMessageDialog(this, "datos incorrectos");
+            JOptionPane.showMessageDialog(this, "datos incorrectos");
         }
     }//GEN-LAST:event_btnAceptarMouseClicked
 

@@ -163,9 +163,6 @@ public class Perfil extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "error al cargar la imagen" + e);
             }
         }
-        
-        
-        
     }//GEN-LAST:event_jlFotoMouseClicked
 
     private void jlNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlNombreMouseClicked

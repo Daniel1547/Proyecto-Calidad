@@ -112,25 +112,5 @@ public class Datos {
             return false;
     }
     
-   public void seleccionarFoto(){
-        int resultado;
-        File fichero;
-        Carga ven = new Carga();
-        Perfil per = new Perfil();
-        
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNGP","jpg","png");
-        ven.jfcCarga.setFileFilter(filtro);
-        resultado = ven.jfcCarga.showOpenDialog(null);
-        if(JFileChooser.APPROVE_OPTION == resultado){
-            fichero = ven.jfcCarga.getSelectedFile();
-            try{
-                 ImageIcon imagen = new ImageIcon(fichero.toString());
-                 Icon icono = new ImageIcon (imagen.getImage().getScaledInstance(per.jlFoto.getWidth(),per.jlFoto.getHeight(), Image.SCALE_DEFAULT));
-                  per.jlFoto.setText(null);
-                 per.jlFoto.setIcon(icono);
-            }catch(Exception e){
-                
-            }
-        }
-   }
+  
 }
